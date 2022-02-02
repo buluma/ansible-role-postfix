@@ -16,10 +16,6 @@ molecule:
   retry: 1
   parallel:
     matrix:
-      - image: "amazonlinux"
-        tag: "1"
-      - image: "debian"
-        tag: "latest"
       - image: "debian"
         tag: "bookworm"
       - image: "fedora"
