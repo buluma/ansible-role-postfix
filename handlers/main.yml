@@ -1,7 +1,7 @@
 ---
 # handlers file for postfix
 
-- name: rebuild alias database
+- name: Rebuild alias database
   ansible.builtin.command:
     cmd: postmap "{{ postfix_alias_path }}"
 

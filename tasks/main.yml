@@ -71,7 +71,7 @@
     - Validate configuration
     - Restart postfix
 
-- name: flush handlers
+- name: Flush handlers
   ansible.builtin.meta: flush_handlers
 
 - name: Configure aliases
