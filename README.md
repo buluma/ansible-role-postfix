@@ -2,9 +2,9 @@
 
 Install and configure postfix on your system.
 
-|GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
-|------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-postfix/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-postfix/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-postfix/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-postfix)|[![quality](https://img.shields.io/ansible/quality/57872)](https://galaxy.ansible.com/buluma/postfix)|[![downloads](https://img.shields.io/ansible/role/d/57872)](https://galaxy.ansible.com/buluma/postfix)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-postfix.svg)](https://github.com/buluma/ansible-role-postfix/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-postfix.svg)](https://github.com/buluma/ansible-role-postfix/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-postfix.svg)](https://github.com/buluma/ansible-role-postfix/pulls/)|
+|GitHub|GitLab|Downloads|Version|Issues|Pull Requests|
+|------|------|-------|-------|------|-------------|
+|[![github](https://github.com/buluma/ansible-role-postfix/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-postfix/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-postfix/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-postfix)|[![downloads](https://img.shields.io/ansible/role/d/4804)](https://galaxy.ansible.com/buluma/postfix)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-postfix.svg)](https://github.com/buluma/ansible-role-postfix/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-postfix.svg)](https://github.com/buluma/ansible-role-postfix/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-postfix.svg)](https://github.com/buluma/ansible-role-postfix/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
