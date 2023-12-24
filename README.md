@@ -1,10 +1,10 @@
-# [Ansible role postfix](#postfix)
+# Ansible role [postfix](https://galaxy.ansible.com/ui/standalone/roles/buluma/postfix/documentation)
 
 Install and configure postfix on your system.
 
-|GitHub|Version|Issues|Pull Requests|
-|------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-postfix/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-postfix/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-postfix.svg)](https://github.com/buluma/ansible-role-postfix/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-postfix.svg)](https://github.com/buluma/ansible-role-postfix/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-postfix.svg)](https://github.com/buluma/ansible-role-postfix/pulls/)|
+|GitHub|Version|Issues|Pull Requests|Downloads|
+|------|-------|------|-------------|---------|
+|[![github](https://github.com/buluma/ansible-role-postfix/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-postfix/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-postfix.svg)](https://github.com/buluma/ansible-role-postfix/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-postfix.svg)](https://github.com/buluma/ansible-role-postfix/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-postfix.svg)](https://github.com/buluma/ansible-role-postfix/pulls/)|[![Ansible Role](https://img.shields.io/ansible/role/d/buluma/postfix)](https://galaxy.ansible.com/ui/standalone/roles/buluma/postfix/documentation)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -318,9 +318,7 @@ If you find issues, please register them in [GitHub](https://github.com/buluma/a
 
 ## [Author Information](#author-information)
 
-[buluma](https://buluma.github.io/)
+[Shadow Walker](https://buluma.github.io/)
 
-
-### [Special Thanks](#special-thanks)
 
 Template inspired by [Robert de Bock](https://github.com/robertdebock)
