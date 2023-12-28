@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/buluma/ansible-role-postfix/tree/HEAD)
+## [1.0.7](https://github.com/buluma/ansible-role-postfix/tree/1.0.7) (2023-12-27)
 
-[Full Changelog](https://github.com/buluma/ansible-role-postfix/compare/1.0.6...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-postfix/compare/1.0.6...1.0.7)
 
 **Closed issues:**
 
