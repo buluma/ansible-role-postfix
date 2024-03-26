@@ -4,27 +4,27 @@
 - name: Rebuild alias database
   ansible.builtin.command:
     cmd: postalias "{{ postfix_alias_path }}"
-  changed_when: yes
+  changed_when: true
 
 - name: Rebuild sender_access database
   ansible.builtin.command:
     cmd: postmap "{{ postfix_sender_access_path }}"
-  changed_when: yes
+  changed_when: true
 
 - name: Rebuild recipient_access database
   ansible.builtin.command:
     cmd: postmap "{{ postfix_recipient_access_path }}"
-  changed_when: yes
+  changed_when: true
 
 - name: Rebuild transport_maps database
   ansible.builtin.command:
     cmd: postmap /etc/postfix/transport
-  changed_when: yes
+  changed_when: true
 
 - name: Validate configuration
   ansible.builtin.command:
     cmd: postconf
-  changed_when: no
+  changed_when: false
 
 - name: Reload postfix
   ansible.builtin.service:
