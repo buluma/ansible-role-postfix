@@ -19,7 +19,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
   roles:
     - role: buluma.postfix
-      postfix_relayhost: "[relay.example.com]"
+      # postfix_relayhost: "[relay.example.com]"
       postfix_myhostname: "smtp.example.com"
       postfix_mydomain: "example.com"
       postfix_myorigin: "example.com"
@@ -29,6 +29,15 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
       postfix_aliases:
         - name: root
           destination: test@example.com
+      # Ziggo settings: ("email-address" and "email-password" are placeholders)
+      postfix_relayhost: "[smtp.ziggo.nl]:587"
+      postfix_smtp_sasl_auth_enable: true
+      postfix_smtp_sasl_password_map: "/etc/postfix/relay_pass"
+      postfix_smtp_sasl_security_options: ""
+      postfix_smtp_tls_wrappermode: false
+      postfix_smtp_tls_security_level: may
+      postfix_smtp_sasl_password_map_content: |
+        [smtp.ziggo.nl]:587 email-address:email-password
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-postfix/blob/master/molecule/default/prepare.yml):
@@ -109,12 +118,12 @@ postfix_smtpd_sender_restrictions:
 postfix_smtp_tls_security_level: none
 
 # To enable spamassassin, ensure spamassassin is installed,
-# (hint: role: robertdebock.spamassassin) and set these two variables:
+# (hint: role: buluma.spamassassin) and set these two variables:
 # postfix_spamassassin: enabled
 # postfix_spamassassin_user: spamd
 
 # To enable clamav, ensure clamav is installed,
-# (hint: role: robertdebock.clamav) and set this variable:
+# (hint: role: buluma.clamav) and set this variable:
 # postfix_clamav: enabled
 
 # You can configure aliases here. Typically redirecting `root` is a good plan.
@@ -148,7 +157,7 @@ postfix_smtp_tls_security_level: none
 # Whether or not to use the local biff service.
 # postfix_biff: true
 
-# With locally submitted mail, append the string ".$mydomain" to addresses that have false ".domain" information
+# With locally submitted mail, append the string ".$mydomain" to addresses that have no ".domain" information
 # postfix_append_dot_mydomain: false
 
 # The alias databases that are used for local(8) delivery
@@ -196,8 +205,14 @@ postfix_smtp_tls_security_level: none
 # File with the Postfix SMTP server RSA certificate in PEM format.
 # postfix_smtpd_tls_cert_file: /etc/letsencrypt/live/smtp.syhosting.ch/cert.pem
 
+# Local file with the Postfix SMTP server RSA certificate in PEM format which shall be copied to the target host.
+# postfix_smtpd_tls_cert_file_source: ./certs/cert.pem
+
 # File with the Postfix SMTP server RSA private key in PEM format.
 # postfix_smtpd_tls_key_file: /etc/letsencrypt/live/smtp.syhosting.ch/privkey.pem
+
+# Local file with the Postfix SMTP server RSA private key in PEM format which shall be copied to the target host.
+# postfix_smtpd_tls_key_file_source: ./certs/privkey.pem
 
 # Request that the Postfix SMTP server produces Received: message headers that include information about the protocol and cipher used, as well as the remote SMTP client CommonName and client certificate issuer CommonName.
 # postfix_smtpd_tls_received_header: true
@@ -264,6 +279,17 @@ postfix_smtp_tls_security_level: none
 
 # The location of Postfix HTML files that describe how to build, configure or operate a specific Postfix subsystem or feature.
 # postfix_html_directory: /usr/share/doc/postfix/html
+
+# You can change the port where Postfix listens on.
+# Postfix used `/etc/services` to map service names to port numbers like `2525`.
+# So either specifcy a port number or a service name like `smtp`.
+postfix_smtp_listen_port: smtp
+
+postfix_smtp_sasl_auth_enable: false
+postfix_smtp_sasl_password_map: ""
+postfix_smtp_sasl_security_options: ""
+postfix_smtp_tls_wrappermode: false
+postfix_smtp_sasl_password_map_content: ""
 ```
 
 ## [Requirements](#requirements)
