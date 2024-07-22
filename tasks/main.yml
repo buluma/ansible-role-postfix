@@ -151,7 +151,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    mode: 0700
+    mode: "0700"
   loop:
     - "{{ postfix_smtpd_tls_cert_file | dirname }}"
     - "{{ postfix_smtpd_tls_key_file | dirname }}"
