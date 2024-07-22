@@ -319,8 +319,8 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 
 |container|tags|
 |---------|----|
-|[Amazon](https://hub.docker.com/r/buluma/amazonlinux)|2018.03|
-|[EL](https://hub.docker.com/r/buluma/enterpriselinux)|7, 8|
+|[Amazon](https://hub.docker.com/r/buluma/amazonlinux)|Candidate|
+|[EL](https://hub.docker.com/r/buluma/enterpriselinux)|9, 8|
 |[Debian](https://hub.docker.com/r/buluma/debian)|all|
 |[Fedora](https://hub.docker.com/r/buluma/fedora)|all|
 |[Ubuntu](https://hub.docker.com/r/buluma/ubuntu)|all|
