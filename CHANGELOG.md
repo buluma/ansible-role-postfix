@@ -6,6 +6,7 @@
 
 **Closed issues:**
 
+- Update action [\#13](https://github.com/buluma/ansible-role-postfix/issues/13)
 - rebuild action [\#12](https://github.com/buluma/ansible-role-postfix/issues/12)
 
 ## [24.3.31](https://github.com/buluma/ansible-role-postfix/tree/24.3.31) (2024-03-29)
