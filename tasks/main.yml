@@ -26,9 +26,8 @@
     name: postfix-mysql
     state: present
   when:
-    - (postfix_virtual_mailbox_maps is defined and "'mysql' in postfix_virtual_mailbox_maps) or
-      (postfix_virtual_mailbox_domains is defined and 'mysql' in postfix_virtual_mailbox_domains) or
-      (postix_virtual_alias_maps is defined and 'mysql' in postix_virtual_alias_maps")
+    - (postfix_virtual_mailbox_maps is defined and "'mysql' in postfix_virtual_mailbox_maps) or (postfix_virtual_mailbox_domains is defined and 'mysql' in
+      postfix_virtual_mailbox_domains) or (postix_virtual_alias_maps is defined and 'mysql' in postix_virtual_alias_maps")
 
 - name: Configure postfix (transport_maps)
   ansible.builtin.template:
@@ -94,16 +93,20 @@
       {% if postfix_smtpd_recipient_restrictions is defined %}
       {% if postfix_smtpd_recipient_restrictions is string %}
       {{ _postfix_smtpd_recipient_restrictions_check_recipient_access | trim }} {{ postfix_smtpd_recipient_restrictions }}
-      {% elif postfix_smtpd_recipient_restrictions is iterable and (postfix_smtpd_recipient_restrictions is not string and postfix_smtpd_recipient_restrictions is not mapping) %}
-      {{ _postfix_smtpd_recipient_restrictions_check_recipient_access | trim }} {% for domain in postfix_smtpd_recipient_restrictions %}{{ domain }}{% if not loop.last %}, {% endif %}{% endfor %}
+      {% elif postfix_smtpd_recipient_restrictions is iterable and (postfix_smtpd_recipient_restrictions is not string and postfix_smtpd_recipient_restrictions is
+      not mapping) %}
+      {{ _postfix_smtpd_recipient_restrictions_check_recipient_access | trim }} {% for domain in postfix_smtpd_recipient_restrictions %}{{ domain }}{% if not loop.last
+      %}, {% endif %}{% endfor %}
       {% endif %}
       {% endif %}
     _postfix_smtpd_sender_restrictions: >-
       {% if postfix_smtpd_sender_restrictions is defined %}
       {% if postfix_smtpd_sender_restrictions is string %}
       {{ _postfix_smtpd_sender_restrictions_check_sender_access | trim }} {{ postfix_smtpd_sender_restrictions }}
-      {% elif postfix_smtpd_sender_restrictions is iterable and (postfix_smtpd_sender_restrictions is not string and postfix_smtpd_sender_restrictions is not mapping) %}
-      {{ _postfix_smtpd_sender_restrictions_check_sender_access | trim }} {% for domain in postfix_smtpd_sender_restrictions %}{{ domain }}{% if not loop.last %}, {% endif %}{% endfor %}
+      {% elif postfix_smtpd_sender_restrictions is iterable and (postfix_smtpd_sender_restrictions is not string and postfix_smtpd_sender_restrictions is not mapping)
+      %}
+      {{ _postfix_smtpd_sender_restrictions_check_sender_access | trim }} {% for domain in postfix_smtpd_sender_restrictions %}{{ domain }}{% if not loop.last %},
+      {% endif %}{% endfor %}
       {% endif %}
       {% endif %}
     _postfix_virtual_mailbox_domains: >-

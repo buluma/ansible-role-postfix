@@ -1,5 +1,4 @@
 ---
-
 - name: assert | Test postfix_myhostname
   ansible.builtin.assert:
     that:
@@ -433,8 +432,7 @@
 - name: assert | Test postfix_smtp_listen_port
   ansible.builtin.assert:
     that:
-      - postfix_smtp_listen_port is number or
-        postfix_smtp_listen_port is string
+      - postfix_smtp_listen_port is number or postfix_smtp_listen_port is string
     quiet: true
 
 - name: assert | Test postfix_smtp_sasl_auth_enable
