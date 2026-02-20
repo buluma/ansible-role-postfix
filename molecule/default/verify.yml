@@ -13,5 +13,5 @@
       community.general.mail:
         from: "Michael Buluma <michael@example.com>"
         to: "Michael Buluma <root@example.com>"
-        subject: Testing ansible-role-postfix.
+        subject: Testing buluma.postfix.
         body: Testing the ansible role postfix.
