@@ -1,17 +1,14 @@
----
-- name: Verify
-  hosts: all
-  become: true
+- become: true
   gather_facts: false
-
+  hosts: all
+  name: Verify
   tasks:
-    - name: Check if port 25 is open
-      ansible.builtin.wait_for:
-        port: 25
-
-    - name: Check if a mail can be sent
-      community.general.mail:
-        from: "Michael Buluma <michael@example.com>"
-        to: "Michael Buluma <root@example.com>"
-        subject: Testing buluma.postfix.
-        body: Testing the ansible role postfix.
+  - ansible.builtin.wait_for:
+      port: 25
+    name: Check if port 25 is open
+  - community.general.mail:
+      body: Testing the ansible role postfix.
+      from: Michael Buluma <michael@example.com>
+      subject: Testing buluma.postfix.
+      to: Michael Buluma <root@example.com>
+    name: Check if a mail can be sent

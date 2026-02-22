@@ -1,5 +1,4 @@
----
+collections: null
 roles:
-  - name: buluma.bootstrap
-  - name: buluma.core_dependencies
-collections:
+- name: buluma.bootstrap
+- name: buluma.core_dependencies
