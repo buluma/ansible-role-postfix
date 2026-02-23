@@ -1,25 +1,25 @@
 ---
-  - become: true
-    gather_facts: true
-    hosts: all
-    name: Converge
-    roles:
-      - postfix_aliases:
-          - destination: test@example.com
-            name: root
-        postfix_mydomain: example.com
-        postfix_myhostname: smtp.example.com
-        postfix_mynetworks:
-          - 127.0.0.0/8
-          - 192.168.0.0/16
-        postfix_myorigin: example.com
-        postfix_relayhost: '[smtp.ziggo.nl]:587'
-        postfix_smtp_sasl_auth_enable: true
-        postfix_smtp_sasl_password_map: /etc/postfix/relay_pass
-        postfix_smtp_sasl_password_map_content: '[smtp.ziggo.nl]:587 email-address:email-password
+- become: true
+  gather_facts: true
+  hosts: all
+  name: Converge
+  roles:
+  - postfix_aliases:
+    - destination: test@example.com
+      name: root
+    postfix_mydomain: example.com
+    postfix_myhostname: smtp.example.com
+    postfix_mynetworks:
+    - 127.0.0.0/8
+    - 192.168.0.0/16
+    postfix_myorigin: example.com
+    postfix_relayhost: '[smtp.ziggo.nl]:587'
+    postfix_smtp_sasl_auth_enable: true
+    postfix_smtp_sasl_password_map: /etc/postfix/relay_pass
+    postfix_smtp_sasl_password_map_content: '[smtp.ziggo.nl]:587 email-address:email-password
 
-          '
-        postfix_smtp_sasl_security_options: ''
-        postfix_smtp_tls_security_level: may
-        postfix_smtp_tls_wrappermode: false
-        role: buluma.postfix
+      '
+    postfix_smtp_sasl_security_options: ''
+    postfix_smtp_tls_security_level: may
+    postfix_smtp_tls_wrappermode: false
+    role: buluma.postfix

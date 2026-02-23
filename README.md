@@ -12,43 +12,43 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
 ```yaml
 ---
-  - become: true
-    gather_facts: true
-    hosts: all
-    name: Converge
-    roles:
-      - postfix_aliases:
-          - destination: test@example.com
-            name: root
-        postfix_mydomain: example.com
-        postfix_myhostname: smtp.example.com
-        postfix_mynetworks:
-          - 127.0.0.0/8
-          - 192.168.0.0/16
-        postfix_myorigin: example.com
-        postfix_relayhost: '[smtp.ziggo.nl]:587'
-        postfix_smtp_sasl_auth_enable: true
-        postfix_smtp_sasl_password_map: /etc/postfix/relay_pass
-        postfix_smtp_sasl_password_map_content: '[smtp.ziggo.nl]:587 email-address:email-password
+- become: true
+  gather_facts: true
+  hosts: all
+  name: Converge
+  roles:
+  - postfix_aliases:
+    - destination: test@example.com
+      name: root
+    postfix_mydomain: example.com
+    postfix_myhostname: smtp.example.com
+    postfix_mynetworks:
+    - 127.0.0.0/8
+    - 192.168.0.0/16
+    postfix_myorigin: example.com
+    postfix_relayhost: '[smtp.ziggo.nl]:587'
+    postfix_smtp_sasl_auth_enable: true
+    postfix_smtp_sasl_password_map: /etc/postfix/relay_pass
+    postfix_smtp_sasl_password_map_content: '[smtp.ziggo.nl]:587 email-address:email-password
 
-          '
-        postfix_smtp_sasl_security_options: ''
-        postfix_smtp_tls_security_level: may
-        postfix_smtp_tls_wrappermode: false
-        role: buluma.postfix
+      '
+    postfix_smtp_sasl_security_options: ''
+    postfix_smtp_tls_security_level: may
+    postfix_smtp_tls_wrappermode: false
+    role: buluma.postfix
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-postfix/blob/master/molecule/default/prepare.yml):
 
 ```yaml
 ---
-  - become: true
-    gather_facts: false
-    hosts: all
-    name: Prepare
-    roles:
-      - role: buluma.bootstrap
-      - role: buluma.core_dependencies
+- become: true
+  gather_facts: false
+  hosts: all
+  name: Prepare
+  roles:
+  - role: buluma.bootstrap
+  - role: buluma.core_dependencies
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
@@ -66,7 +66,7 @@ postfix_mydestination: $mydomain, $myhostname, localhost.$mydomain, localhost
 postfix_mydomain: "{{ ansible_domain | default('localdomain', true) }}"
 postfix_myhostname: "{{ ansible_fqdn }}"
 postfix_mynetworks:
-  - 127.0.0.0/8
+- 127.0.0.0/8
 postfix_myorigin: "{{ ansible_domain | default('localdomain', true) }}"
 postfix_smtp_listen_port: smtp
 postfix_smtp_sasl_auth_enable: false
@@ -76,21 +76,21 @@ postfix_smtp_sasl_security_options: ""
 postfix_smtp_tls_security_level: none
 postfix_smtp_tls_wrappermode: false
 postfix_smtpd_recipient_restrictions:
-  - permit_mynetworks
-  - permit_sasl_authenticated
-  - reject_unauth_destination
-  - reject_invalid_hostname
-  - reject_non_fqdn_hostname
-  - reject_non_fqdn_sender
-  - reject_non_fqdn_recipient
-  - reject_unknown_sender_domain
-  - reject_unknown_recipient_domain
-  - reject_rbl_client sbl.spamhaus.org
-  - reject_rbl_client cbl.abuseat.org
-  - reject_rbl_client dul.dnsbl.sorbs.net
-  - permit
+- permit_mynetworks
+- permit_sasl_authenticated
+- reject_unauth_destination
+- reject_invalid_hostname
+- reject_non_fqdn_hostname
+- reject_non_fqdn_sender
+- reject_non_fqdn_recipient
+- reject_unknown_sender_domain
+- reject_unknown_recipient_domain
+- reject_rbl_client sbl.spamhaus.org
+- reject_rbl_client cbl.abuseat.org
+- reject_rbl_client dul.dnsbl.sorbs.net
+- permit
 postfix_smtpd_sender_restrictions:
-  - reject_unknown_sender_domain
+- reject_unknown_sender_domain
 ```
 
 ## [Requirements](#requirements)

@@ -1,5 +1,5 @@
 ---
 collections:
 roles:
-  - name: buluma.bootstrap
-  - name: buluma.core_dependencies
+- name: buluma.bootstrap
+- name: buluma.core_dependencies
