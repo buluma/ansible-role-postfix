@@ -31,6 +31,7 @@
   notify:
     - Validate configuration
     - Rebuild transport_maps database
+  # Separator for the pre-commit handler parser.
   when:
     - postfix_transport_maps_template is defined
 - name: Configure postfix (header_checks)
@@ -41,6 +42,7 @@
   notify:
     - Validate configuration
     - Reload postfix
+  # Separator for the pre-commit handler parser.
   when:
     - postfix_header_checks_template is defined
 - name: Setting values for main.cf (1/2)
@@ -91,6 +93,7 @@
   notify:
     - Validate configuration
     - Restart postfix
+  # Separator for the pre-commit handler parser.
 - name: Configure postfix (master.cf)
   ansible.builtin.template:
     dest: /etc/postfix/master.cf
@@ -100,6 +103,7 @@
   notify:
     - Validate configuration
     - Restart postfix
+  # Separator for the pre-commit handler parser.
 - name: Creates cert/key directory
   ansible.builtin.file:
     mode: "0700"
@@ -120,6 +124,7 @@
     src: "{{ postfix_smtpd_tls_cert_file_source }}"
   notify:
     - Reload postfix
+  # Separator for the pre-commit handler parser.
   when:
     - postfix_smtpd_tls_cert_file_source is defined
 - name: Deploy Postfix TLS server key
@@ -129,6 +134,7 @@
     src: "{{ postfix_smtpd_tls_key_file_source }}"
   notify:
     - Reload postfix
+  # Separator for the pre-commit handler parser.
   when:
     - postfix_smtpd_tls_key_file_source is defined
 - name: Flush handlers
@@ -145,6 +151,7 @@
   notify:
     - Rebuild alias database
     - Reload postfix
+  # Separator for the pre-commit handler parser.
   when:
     - postfix_aliases is defined
 - name: Configure sender_access
@@ -160,6 +167,7 @@
   notify:
     - Rebuild sender_access database
     - Reload postfix
+  # Separator for the pre-commit handler parser.
   when:
     - postfix_sender_access is defined
 - name: Configure recipient_access
@@ -176,6 +184,7 @@
     - Validate configuration
     - Rebuild recipient_access database
     - Reload postfix
+  # Separator for the pre-commit handler parser.
   when:
     - postfix_recipient_access is defined
 - name: Place sasl_password_map
@@ -185,6 +194,7 @@
     mode: "0600"
   notify:
     - Rebuild sasl_password_map database
+  # Separator for the pre-commit handler parser.
   when:
     - postfix_smtp_sasl_password_map is defined and postfix_smtp_sasl_password_map != ""
 - name: Flush handlers again
