@@ -9,6 +9,13 @@
 - Update action [\#13](https://github.com/buluma/ansible-role-postfix/issues/13)
 - rebuild action [\#12](https://github.com/buluma/ansible-role-postfix/issues/12)
 
+**Merged pull requests:**
+
+- Update release\_drafter.yml [\#31](https://github.com/buluma/ansible-role-postfix/pull/31) ([buluma](https://github.com/buluma))
+- Bump ansible/ansible-lint from 26.2.0 to 26.3.0 [\#30](https://github.com/buluma/ansible-role-postfix/pull/30) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump ansible/ansible-lint from 26.1.1 to 26.2.0 [\#28](https://github.com/buluma/ansible-role-postfix/pull/28) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/checkout from 4 to 6 [\#27](https://github.com/buluma/ansible-role-postfix/pull/27) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [24.3.31](https://github.com/buluma/ansible-role-postfix/tree/24.3.31) (2024-03-29)
 
 [Full Changelog](https://github.com/buluma/ansible-role-postfix/compare/1.2.0...24.3.31)
