@@ -11,6 +11,7 @@
 
 **Merged pull requests:**
 
+- Bump release-drafter/release-drafter from 6 to 7 [\#34](https://github.com/buluma/ansible-role-postfix/pull/34) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump release-drafter/release-drafter from 5 to 6 [\#33](https://github.com/buluma/ansible-role-postfix/pull/33) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump actions/checkout from 4 to 6 [\#32](https://github.com/buluma/ansible-role-postfix/pull/32) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update release\_drafter.yml [\#31](https://github.com/buluma/ansible-role-postfix/pull/31) ([buluma](https://github.com/buluma))
