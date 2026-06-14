@@ -3,11 +3,11 @@ postfix_banner: $myhostname ESMTP $mail_name
 postfix_inet_interfaces: loopback-only
 postfix_inet_protocols: all
 postfix_mydestination: $mydomain, $myhostname, localhost.$mydomain, localhost
-postfix_mydomain: "{{ ansible_domain | default('localdomain', true) }}"
+postfix_mydomain: "{{ ansible_facts['domain'] | default('localdomain', true) }}"
 postfix_myhostname: "{{ ansible_facts['fqdn'] }}"
 postfix_mynetworks:
   - 127.0.0.0/8
-postfix_myorigin: "{{ ansible_domain | default('localdomain', true) }}"
+postfix_myorigin: "{{ ansible_facts['domain'] | default('localdomain', true) }}"
 postfix_smtp_listen_port: smtp
 postfix_smtp_sasl_auth_enable: false
 postfix_smtp_sasl_password_map: ""
