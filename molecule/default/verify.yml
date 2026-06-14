@@ -1,15 +1,19 @@
 ---
-- become: true
-  gather_facts: false
+- name: Verify
   hosts: all
-  name: Verify
+  become: true
+  gather_facts: false
   tasks:
-    - ansible.builtin.wait_for:
+    - name: Check if port 25 is open
+      ansible.builtin.wait_for:
         port: 25
-      name: Check if port 25 is open
-    - community.general.mail:
-        body: Testing the ansible role postfix.
-        from: Michael Buluma <michael@example.com>
-        subject: Testing buluma.postfix.
-        to: Michael Buluma <root@example.com>
-      name: Check if a mail can be sent
+
+    - name: Check if postfix service is running
+      ansible.builtin.service_facts:
+
+    - name: Assert postfix is active
+      ansible.builtin.assert:
+        that:
+          - "'postfix' in services"
+          - "services['postfix']['state'] == 'running'"
+        quiet: true

@@ -1,10 +1,11 @@
 ---
-- become: true
-  gather_facts: true
+- name: Converge
   hosts: all
-  name: Converge
+  become: true
+  gather_facts: true
   roles:
-    - postfix_aliases:
+    - role: buluma.postfix
+      postfix_aliases:
         - destination: test@example.com
           name: root
       postfix_mydomain: example.com
@@ -23,4 +24,3 @@
       postfix_smtp_sasl_security_options: ""
       postfix_smtp_tls_security_level: may
       postfix_smtp_tls_wrappermode: false
-      role: buluma.postfix
