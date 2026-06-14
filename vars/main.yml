@@ -12,10 +12,10 @@ _postfix_daemon_directory:
 _postfix_group:
   Suse: maildrop
   default: postdrop
-postfix_alias_path: "{{ _postfix_alias_path[ansible_facts.os_family] | default(_postfix_alias_path['default']) }}"
-postfix_compatibility_level: "{{ _postfix_compatibility_level[ansible_facts.distribution_release] | default(_postfix_compatibility_level['default']) }}"
-postfix_daemon_directory: "{{ _postfix_daemon_directory[ansible_facts.os_family] | default(_postfix_daemon_directory['default']) }}"
-postfix_group: "{{ _postfix_group[ansible_facts.os_family] | default(_postfix_group['default']) }}"
+postfix_alias_path: "{{ _postfix_alias_path[ansible_facts['os_family']] | default(_postfix_alias_path['default']) }}"
+postfix_compatibility_level: "{{ _postfix_compatibility_level[ansible_facts['distribution_release']] | default(_postfix_compatibility_level['default']) }}"
+postfix_daemon_directory: "{{ _postfix_daemon_directory[ansible_facts['os_family']] | default(_postfix_daemon_directory['default']) }}"
+postfix_group: "{{ _postfix_group[ansible_facts['os_family']] | default(_postfix_group['default']) }}"
 postfix_recipient_access_path: /etc/postfix/recipient_access
 postfix_sender_access_path: /etc/postfix/sender_access
 postfix_service: postfix

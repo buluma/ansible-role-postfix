@@ -4,7 +4,7 @@ postfix_inet_interfaces: loopback-only
 postfix_inet_protocols: all
 postfix_mydestination: $mydomain, $myhostname, localhost.$mydomain, localhost
 postfix_mydomain: "{{ ansible_domain | default('localdomain', true) }}"
-postfix_myhostname: "{{ ansible_facts.fqdn }}"
+postfix_myhostname: "{{ ansible_facts['fqdn'] }}"
 postfix_mynetworks:
   - 127.0.0.0/8
 postfix_myorigin: "{{ ansible_domain | default('localdomain', true) }}"

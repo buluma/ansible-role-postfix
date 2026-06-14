@@ -11,7 +11,7 @@
     value: No configuration
     vtype: string
   when:
-    - ansible_facts.os_family == "Debian"
+    - ansible_facts['os_family'] == "Debian"
 - name: Install postfix
   ansible.builtin.package:
     name: postfix
