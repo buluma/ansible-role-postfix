@@ -12,12 +12,13 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
 ```yaml
 ---
-- become: true
-  gather_facts: true
+- name: Converge
   hosts: all
-  name: Converge
+  become: true
+  gather_facts: true
   roles:
-    - postfix_aliases:
+    - role: buluma.postfix
+      postfix_aliases:
         - destination: test@example.com
           name: root
       postfix_mydomain: example.com
@@ -36,17 +37,24 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
       postfix_smtp_sasl_security_options: ""
       postfix_smtp_tls_security_level: may
       postfix_smtp_tls_wrappermode: false
-      role: buluma.postfix
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-postfix/blob/master/molecule/default/prepare.yml):
 
 ```yaml
 ---
-- become: true
-  gather_facts: false
+- name: Prepare
   hosts: all
-  name: Prepare
+  become: true
+  gather_facts: false
+
+  pre_tasks:
+    - name: Install sudo if missing
+      ansible.builtin.raw: "{{ ansible_pkg_mgr | default('dnf') }} install -y sudo}"
+      become: false
+      changed_when: false
+      failed_when: false
+
   roles:
     - role: buluma.bootstrap
     - role: buluma.core_dependencies
@@ -64,11 +72,11 @@ postfix_banner: $myhostname ESMTP $mail_name
 postfix_inet_interfaces: loopback-only
 postfix_inet_protocols: all
 postfix_mydestination: $mydomain, $myhostname, localhost.$mydomain, localhost
-postfix_mydomain: "{{ ansible_domain | default('localdomain', true) }}"
-postfix_myhostname: "{{ ansible_fqdn }}"
+postfix_mydomain: "{{ ansible_facts['domain'] | default('localdomain', true) }}"
+postfix_myhostname: "{{ ansible_facts['fqdn'] }}"
 postfix_mynetworks:
   - 127.0.0.0/8
-postfix_myorigin: "{{ ansible_domain | default('localdomain', true) }}"
+postfix_myorigin: "{{ ansible_facts['domain'] | default('localdomain', true) }}"
 postfix_smtp_listen_port: smtp
 postfix_smtp_sasl_auth_enable: false
 postfix_smtp_sasl_password_map: ""
@@ -117,14 +125,14 @@ Here is an overview of related roles:
 
 ## [Compatibility](#compatibility)
 
-This role has been tested on these [container images](https://hub.docker.com/u/robertdebock):
+This role has been tested on these [container images](https://hub.docker.com/u/buluma):
 
 |container|tags|
 |---------|----|
-|[EL](https://hub.docker.com/r/robertdebock/enterpriselinux)|all|
-|[Debian](https://hub.docker.com/r/robertdebock/debian)|all|
-|[Fedora](https://hub.docker.com/r/robertdebock/fedora)|all|
-|[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|all|
+|[EL](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
+|[Debian](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
+|[Fedora](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
+|[Ubuntu](https://hub.docker.com/r/buluma/docker-molecule-images)|all|
 
 The minimum version of Ansible required is 2.12, tests have been done on:
 
@@ -142,6 +150,3 @@ If you find issues, please register them on [GitHub](https://github.com/buluma/a
 
 [buluma](https://buluma.github.io/)
 
-### Get Help
-- Report issues: https://github.com/buluma/ansible-role-postfix/issues/new
-- See docs: https://docs.ansible.com/collection/gallery/ansible-role-postfix
