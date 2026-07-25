@@ -11,9 +11,13 @@
     - name: Check if postfix service is running
       ansible.builtin.service_facts:
 
+    - name: Determine postfix service_facts key
+      ansible.builtin.set_fact:
+        postfix_service_fact_key: "{{ ('postfix' in services) | ternary('postfix', 'postfix.service') }}"
+
     - name: Assert postfix is active
       ansible.builtin.assert:
         that:
-          - "'postfix' in services"
-          - "services['postfix']['state'] == 'running'"
+          - "postfix_service_fact_key in services"
+          - "services[postfix_service_fact_key]['state'] == 'running'"
         quiet: true

@@ -132,6 +132,7 @@
   ansible.builtin.meta: flush_handlers
 - name: Configure aliases
   ansible.builtin.lineinfile:
+    create: true
     line: "{{ item.name }}: {{ item.destination }}"
     mode: "0644"
     path: "{{ postfix_alias_path }}"
