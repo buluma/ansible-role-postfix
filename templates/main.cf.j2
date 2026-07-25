@@ -436,8 +436,13 @@ alias_maps = {{ postfix_alias_maps }}
 #
 #alias_database = dbm:/etc/aliases
 #alias_database = dbm:/etc/mail/aliases
-alias_database = hash:/etc/aliases
+alias_database = {{ postfix_alias_map_type }}:{{ postfix_alias_path }}
 #alias_database = hash:/etc/aliases, hash:/opt/majordomo/aliases
+
+# The default_database_type parameter specifies the default database
+# type for tables that don't explicitly name a map type. postalias
+# and postmap use this when given a bare path.
+default_database_type = {{ postfix_alias_map_type }}
 
 # ADDRESS EXTENSIONS (e.g., user+foo)
 #
